@@ -14,6 +14,7 @@ public class DemoServerPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+		this.getServer().setWhitelist(false);
 		this.scheduleAnnouncement();
         this.registerEvent(new PlayerListener());
 	}
