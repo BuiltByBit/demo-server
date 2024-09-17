@@ -8,6 +8,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 
@@ -29,4 +30,5 @@ public class PlayerListener implements Listener {
 		.append(ChatColor.GREEN + "PebbleHost").setClickAsURL("https://pebblehost.com").save()
 		.send(e.getPlayer());
 	}
-} 
+
+}

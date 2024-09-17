@@ -17,12 +17,13 @@ public class DemoServerPlugin extends JavaPlugin {
 		this.getServer().setWhitelist(false);
 		this.scheduleAnnouncement();
         this.registerEvent(new PlayerListener());
+		this.registerEvent(new CommandListener(this));
 	}
 
-	private final void scheduleAnnouncement() {
+	private void scheduleAnnouncement() {
 		new BukkitRunnable() {
 			private int minutesRemaining = 30;
-			private String prefix = ChatColor.AQUA + "[BUILTBYBIT] " + ChatColor.GRAY; 
+			private final String prefix = ChatColor.AQUA + "[BUILTBYBIT] " + ChatColor.GRAY;
 			public void run() {
 				switch (--minutesRemaining) {
 					case 20:
@@ -38,7 +39,7 @@ public class DemoServerPlugin extends JavaPlugin {
 		}.runTaskTimerAsynchronously(this, 20 * 60, 20 * 60);
 	}
 
-	private final void registerEvent(Listener listener) {
+	private void registerEvent(Listener listener) {
 		this.getServer().getPluginManager().registerEvents(listener, this);
 	}
 }
