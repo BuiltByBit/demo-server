@@ -22,19 +22,19 @@ public class BlockedCommands {
         blockedCommands.put(command, subcommands.length > 0 ? subcommands : new String[]{""});
     }
 
+    private void addAlias(String alias) {
+        aliases.add(alias.trim());
+    }
+
     public void loadCommandAliases() {
-        for (String blockedCommand : blockedCommands.keySet()) {
-            for (String subcommand : blockedCommands.get(blockedCommand)) {
-                aliases.add((blockedCommand + " " + subcommand).trim());
-            }
+        blockedCommands.forEach((blockedCommand, subcommands) -> {
+            Arrays.stream(subcommands).forEach(subcommand -> addAlias(blockedCommand + " " + subcommand));
             PluginCommand pluginCommand = Bukkit.getPluginCommand(blockedCommand);
-            if (pluginCommand == null) continue;
+            if (pluginCommand == null) return;
             pluginCommand.getAliases().forEach(alias -> {
-                for (String subcommand : blockedCommands.get(blockedCommand)) {
-                    aliases.add(alias + " " + subcommand);
-                }
+                Arrays.stream(subcommands).forEach(subcommand -> addAlias(alias + " " + subcommand));
             });
-        }
+        });
     }
 
     public boolean isBlocked(String command) {
