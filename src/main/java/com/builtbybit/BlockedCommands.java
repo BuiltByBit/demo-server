@@ -14,6 +14,10 @@ public class BlockedCommands {
         addCommand("deluxemenus", "list", "dump");
         addCommand("essentials", "dump");
         addCommand("plugman", "disable", "reload", "restart", "unload");
+        addCommand("schem", "share");
+        addCommand("schematic", "share");
+        addCommand("dm", "dump");
+        addCommand("ess", "dump");
         addCommand("download");
         addCommand("sudo");
     }
