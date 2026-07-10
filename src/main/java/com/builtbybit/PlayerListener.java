@@ -25,15 +25,13 @@ public class PlayerListener implements Listener {
 	public void onJoin(PlayerJoinEvent e) {
 		e.getPlayer().setOp(true);
 
-		BaseComponent[] msg = new ComponentBuilder()
-			.append("[BUILTBYBIT]").color(net.md_5.bungee.api.ChatColor.AQUA).event(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://builtbybit.com"))
+		BaseComponent[] msg = new ComponentBuilder("[BUILTBYBIT]").color(net.md_5.bungee.api.ChatColor.AQUA).event(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://builtbybit.com"))
 			.append(" This is a BuiltByBit resource test server.").reset().color(net.md_5.bungee.api.ChatColor.GRAY).create();
 		e.getPlayer().spigot().sendMessage(msg);
 
 		e.getPlayer().sendMessage(ChatColor.GRAY + "You have been granted operator permissions.");
 
-		msg = new ComponentBuilder()
-			.append("Hosting is provided in proud partnership with ").color(net.md_5.bungee.api.ChatColor.GRAY)
+		msg = new ComponentBuilder("Hosting is provided in proud partnership with ").color(net.md_5.bungee.api.ChatColor.GRAY)
 			.append("PebbleHost").color(net.md_5.bungee.api.ChatColor.GREEN).event(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://pebblehost.com")).create();
 		e.getPlayer().spigot().sendMessage(msg);
 	}
