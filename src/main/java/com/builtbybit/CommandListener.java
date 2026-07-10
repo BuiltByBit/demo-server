@@ -1,6 +1,6 @@
 package com.builtbybit;
 
-import org.bukkit.Bukkit;
+import com.builtbybit.folia.FoliaCompat;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -13,7 +13,7 @@ public class CommandListener implements Listener {
     private final BlockedCommands blockedCommands = new BlockedCommands();
 
     public CommandListener(Plugin plugin) {
-        Bukkit.getScheduler().runTaskLater(plugin, blockedCommands::loadCommandAliases, 1);
+        FoliaCompat.runGlobalDelayed(plugin, blockedCommands::loadCommandAliases, 1);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
