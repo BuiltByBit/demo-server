@@ -1,3 +1,7 @@
+/*
+ * Copyright 2022 BuiltByBit
+ * All rights reserved.
+ */
 package com.builtbybit.folia;
 
 import org.bukkit.Bukkit;
