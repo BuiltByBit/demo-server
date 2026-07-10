@@ -4,11 +4,11 @@
 */
 package com.builtbybit;
 
+import com.builtbybit.folia.FoliaCompat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class DemoServerPlugin extends JavaPlugin {
 
@@ -21,7 +21,7 @@ public class DemoServerPlugin extends JavaPlugin {
 	}
 
 	private void scheduleAnnouncement() {
-		new BukkitRunnable() {
+		Runnable announcementTask = new Runnable() {
 			private int minutesRemaining = 30;
 			private final String prefix = ChatColor.AQUA + "[BUILTBYBIT] " + ChatColor.GRAY;
 			public void run() {
@@ -36,7 +36,8 @@ public class DemoServerPlugin extends JavaPlugin {
 						Bukkit.getServer().broadcastMessage(prefix + "Test Server shutting down momentarily!");
 				}
 			}
-		}.runTaskTimerAsynchronously(this, 20 * 60, 20 * 60);
+		};
+		FoliaCompat.runAsyncRepeating(this, announcementTask, 60, 60);
 	}
 
 	private void registerEvent(Listener listener) {
