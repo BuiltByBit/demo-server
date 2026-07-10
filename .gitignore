@@ -78,6 +78,7 @@ cmake-build-*/
 
 # IntelliJ
 out/
+.idea/*
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -122,3 +123,6 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+
+# Apple
+.DS_STORE
